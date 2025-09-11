@@ -43,3 +43,35 @@ descricao VARCHAR(50) NOT NULL  #gasolina, alcool, flex, diesel, eletrico
 
 -- Querys para pegar os dados
 
+-- Quantidade de carros por fabricante (gráfico de barras):
+SELECT f.nome AS fabricante, COUNT(*) AS quantidade
+FROM Carros c
+JOIN Fabricante f ON c.id_fabricante = f.id_fabricante
+GROUP BY f.nome
+ORDER BY quantidade DESC;
+
+-- Média de quilometragem por ano de modelo (gráfico de linhas):
+SELECT ano_modelo, AVG(quilometragem) 
+FROM Carros
+GROUP BY ano_modelo
+ORDER BY ano_modelo;
+
+-- Média de preço por fabricante (gráfico de barras):
+SELECT f.nome AS fabricante, AVG(c.preco) AS media_preco
+FROM Carros c
+JOIN Fabricante f ON c.id_fabricante = f.id_fabricante
+GROUP BY f.nome
+ORDER BY media_preco DESC;
+
+-- Média de preço por tipo de combustível (gráfico de barras):
+SELECT c.id_combustivel, AVG(c.preco) AS media_preco
+FROM Carros c
+JOIN Combustivel co ON c.id_combustivel = co.id_combustivel
+GROUP BY c.id_combustivel
+ORDER BY media_preco DESC;
+
+-- Média de preço por ano de modelo (gráfico de linhas):
+SELECT ano_modelo, AVG(preco) AS media_preco
+FROM Carros
+GROUP BY ano_modelo
+ORDER BY ano_modelo;
