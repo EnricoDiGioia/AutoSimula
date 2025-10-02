@@ -19,7 +19,7 @@
 
 ## Descrição do Projeto
 
-Raspagem de dados do site WebMotors
+Raspagem de dados
 
 
 <p align="right">
